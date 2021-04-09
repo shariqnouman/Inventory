@@ -52,7 +52,6 @@ public class LoginControllerTest {
 	    public void testcreatedata() throws Exception{
 		  String URI = "/validate/register";
 		  Login data=new Login();
-		 // data.setUserId("UshaRedy");
 		  data.setUserId("UshaReddy");
 	        data.setPassword("Sai@1999Nanga");
 	        data.setType("admin");

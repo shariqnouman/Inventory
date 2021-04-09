@@ -21,8 +21,7 @@ class LoginServiceTest {
 
 	    @Autowired
 	    private LoginServiceImpl service;
-	    
-// This method for checking userDetails	    
+	    	    
 	@Test
 	 void validateUserData() throws ResourceNotFoundException
 	{

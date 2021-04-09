@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class LoginTest {
 Login  data=new Login();
-	@Test
+	@Test   
 	void testUserId() {
 	data.setUserId("UshaNanga");
 	assertNotNull(data.getUserId());
