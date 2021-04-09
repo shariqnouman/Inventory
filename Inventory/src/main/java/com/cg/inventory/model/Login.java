@@ -7,7 +7,7 @@ import javax.persistence.Id;
 /**
  * This is an entity class for login with getters, setters, and constructors
  * 
- * @author sharique nooman
+ * @author usha Nanga
  *
  */
 @Entity(name = "login")

@@ -27,7 +27,7 @@ public class LoginControllerTest {
 	 @MockBean
 	 private LoginService service;
 	
-	//This testValidateUser method for validate user
+	//This testValidateUser method for validate user 
 	@Test
 	public void testValidateUser() throws Exception {
 		final String uri= "/api/v1/login/Login1/{userId}/{password}";

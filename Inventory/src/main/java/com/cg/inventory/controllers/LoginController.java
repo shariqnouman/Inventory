@@ -24,7 +24,7 @@ import com.cg.inventory.utils.UserValidate;
  * The LoginController class provides restful services to client like GET, POST,
  * DELETE, and PUT
  * 
- * @author Usha Nanga
+ * @author Usha Nanga  
  *
  */
 @CrossOrigin(origins = "http://localhost:3000")

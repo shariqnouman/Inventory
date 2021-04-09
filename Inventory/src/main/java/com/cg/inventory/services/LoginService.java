@@ -6,7 +6,7 @@ import com.cg.inventory.model.Login;
  * This is an interface for LoginService class, it has all the abstract
  * methods
  * 
- * @author sharique nooman
+ * @author usha Nanga
  *
  */
 public interface LoginService {

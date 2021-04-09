@@ -21,7 +21,7 @@ import com.cg.inventory.model.Login;
 		@Autowired
 		private TestEntityManager test;
 	    
-		//This validateUserData for checking for userData
+		//This validateUserData for checking for userData  
 		@Test
 		 void validateUserData() throws ResourceNotFoundException
 		{

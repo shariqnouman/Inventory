@@ -10,7 +10,7 @@ import com.cg.inventory.repositories.LoginRepository;
 /**
  * The LoginServiceImpl class provides access to JPA methods
  * 
- * @author sharique nooman
+ * @author Usha Nanga
  *
  */
 @Service

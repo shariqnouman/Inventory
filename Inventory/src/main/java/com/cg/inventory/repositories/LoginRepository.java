@@ -9,7 +9,7 @@ import com.cg.inventory.model.Login;
 /**
  * This is an interface which defines CRUD methods for Login JPA repository
  * 
- * @author sharique nooman
+ * @author usha Nanga
  *
  */
 public interface LoginRepository extends JpaRepository<Login, String> {
