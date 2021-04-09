@@ -14,6 +14,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -65,17 +66,13 @@ public class Transaction implements Serializable {
 	private Float paidAmount;
 
 	@NotNull
-	@Positive
+	@PositiveOrZero
 	@Column(name = "due_amount", nullable = false)
 	private Float dueAmount;
 
 	@OneToOne
-	@JoinColumn(name = "order_id", nullable = false)
+	@JoinColumn(name = "order_id", nullable = false, unique = true)
 	private Order order;
-
-	@OneToOne
-	@JoinColumn(name = "customer_id", nullable = false)
-	private Customer customer;
 
 	public Transaction() {
 	}
