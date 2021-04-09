@@ -1,0 +1,5 @@
+package com.cg.inventory.services;
+
+public class CategoryServiceImpl {
+
+}

@@ -1,0 +1,23 @@
+package com.cg.inventory.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.cg.inventory.model.Login;
+
+/**
+ * This is an interface which defines CRUD methods for order JPA repository
+ * 
+ * @author sharique nooman
+ *
+ */
+public interface LoginRepository extends JpaRepository<Login, String> {
+
+	/**
+	 * This method for checking whether userId present in database or not
+	 */
+	@Query(value = "select t from Login t where t.userId=:userId")
+	Login findByID(@Param("userId") String userId);
+
+}

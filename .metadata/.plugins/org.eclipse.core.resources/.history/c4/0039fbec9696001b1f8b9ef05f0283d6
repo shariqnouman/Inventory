@@ -1,0 +1,20 @@
+package com.cg.inventory.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+/**
+ * This is a user defined exception for appointments
+ * 
+ * @author snooman
+ *
+ */
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class OrderNotFoundException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+
+	public OrderNotFoundException(String message) {
+		super(message);
+	}
+}

@@ -1,0 +1,25 @@
+package com.cg.inventory.services;
+
+import java.util.List;
+
+import com.cg.inventory.model.Order;
+
+/**
+ * This is an interface for OrderService class, it has all the abstract methods
+ * 
+ * @author sharique nooman
+ *
+ */
+public interface OrderService {
+
+	List<Order> viewAllOrders();
+
+	Order createOrder(Order order);
+
+	void deleteOrder(Long orderId);
+
+	Order viewOrderById(Long orderId);
+
+	Order updateOrder(Long orderId, Order order);
+
+}

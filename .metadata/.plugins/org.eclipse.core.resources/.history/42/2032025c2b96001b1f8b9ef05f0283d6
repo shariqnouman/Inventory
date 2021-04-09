@@ -1,0 +1,5 @@
+package com.cg.inventory.repositories;
+
+public interface OrdersRepository {
+
+}

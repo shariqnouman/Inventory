@@ -1,0 +1,46 @@
+package com.cg.inventory.model;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class Order implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
+	private Long orderId;
+
+	@Column(name = "order_date", nullable = false)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:MM")
+	private LocalDateTime orderDate;
+
+	@Column(name = "delivery_date", nullable = false)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:MM")
+	private LocalDateTime deliveryDate;
+
+	@Column(name = "order_amount", nullable = false)
+	private Long amount;
+
+//	@OneToOne(mappedBy = "order")
+//	private Customer customer;
+//
+//	@OneToMany(mappedBy = "order") // @ManytoOne private Order order;
+//	private Set<Product> products;
+
+}

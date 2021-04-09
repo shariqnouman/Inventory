@@ -1,0 +1,51 @@
+package com.cg.inventory.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.cg.inventory.model.Login;
+import com.cg.inventory.repositories.LoginRepository;
+
+/**
+ * The LoginServiceImpl class provides access to JPA methods
+ * 
+ * @author sharique nooman
+ *
+ */
+@Service
+@Transactional(rollbackFor = Exception.class)
+public class LoginServiceImpl {
+
+	@Autowired
+	private LoginRepository loginRepository;
+
+	/**
+	 * This method returns login data by searching with specific user Id
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public Login findByID(String userId) {
+		return loginRepository.findByID(userId);
+	}
+
+	/**
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public Login createdata(Login data) {
+		return loginRepository.saveAndFlush(data);
+	}
+
+	/**
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public Login update(Login data) {
+		return loginRepository.saveAndFlush(data);
+	}
+
+}

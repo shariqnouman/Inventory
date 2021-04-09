@@ -1,0 +1,22 @@
+package com.cg.inventory.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.cg.inventory.repositories.CategoryRepository;
+
+/**
+ * The CategoryServiceImpl class provides access to JPA methods to create, remove,
+ * view, and update categories for products
+ * 
+ * @author sharique nooman
+ *
+ */
+@Service
+@Transactional(rollbackFor = Exception.class)
+public class CategoryServiceImpl {
+
+	@Autowired
+	private CategoryRepository categoryRepository;
+}

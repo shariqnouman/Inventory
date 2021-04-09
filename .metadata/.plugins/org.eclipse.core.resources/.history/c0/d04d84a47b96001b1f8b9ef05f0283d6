@@ -1,0 +1,26 @@
+package com.cg.inventory.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.cg.inventory.model.Order;
+import com.cg.inventory.repositories.OrdersRepository;
+
+@Transactional(rollbackFor = Exception.class)
+@Service
+public class OrderServiceImpl {
+
+	@Autowired
+	private OrdersRepository ordersRepository;
+
+	public List<Order> viewAllOrders() {
+		return ordersRepository.findAll();
+	}
+
+	public Order createOrder(Order order) {
+		return ordersRepository.saveAndFlush(order);
+	}
+}

@@ -1,0 +1,60 @@
+package com.cg.inventory.controllers;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.cg.inventory.services.OrderService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * The OrderControllerTest class has test methods for the order controller layer
+ * 
+ * @author sharique nooman
+ *
+ */
+@RunWith(SpringRunner.class)
+@WebMvcTest(OrderController.class)
+public class OrderControllerTest {
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
+	@MockBean
+	private OrderService orderService;
+
+	@Test
+	public void testViewAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreateOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testViewOrderById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

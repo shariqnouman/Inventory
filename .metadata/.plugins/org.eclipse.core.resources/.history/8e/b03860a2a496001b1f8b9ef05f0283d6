@@ -1,0 +1,81 @@
+package com.cg.inventory.controllers;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.assertj.core.util.Arrays;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.cg.inventory.model.Customer;
+import com.cg.inventory.model.Order;
+import com.cg.inventory.model.Product;
+import com.cg.inventory.services.OrderService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * The OrderControllerTest class has test methods for the order controller layer
+ * 
+ * @author sharique nooman
+ *
+ */
+@RunWith(SpringRunner.class)
+@WebMvcTest(OrderController.class)
+public class OrderControllerTest {
+
+	private List<Product> products;
+	private Customer customer;
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
+	@MockBean
+	private OrderService orderService;
+
+	@Before
+	public void setUp() throws Exception {
+		Product product = new Product(10L, "bag");
+		products = new ArrayList<>();
+		products.add(product);
+		customer = new Customer(10L, "shariq");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		products.clear();
+	}
+
+	@Test
+	public void testViewAllOrders() throws Exception {
+		String URI = "/api/v1/order";
+		Order order = new Order(LocalDateTime.now(), LocalDateTime.now(), 1200f, customer, products);
+	}
+
+	@Test
+	public void testCreateOrder() {
+	}
+
+	@Test
+	public void testDeleteOrder() {
+	}
+
+	@Test
+	public void testViewOrderById() {
+	}
+
+	@Test
+	public void testUpdateOrder() {
+	}
+
+}

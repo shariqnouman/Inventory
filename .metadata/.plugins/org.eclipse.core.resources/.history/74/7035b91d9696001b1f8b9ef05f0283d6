@@ -1,0 +1,58 @@
+package com.cg.inventory.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.inventory.model.Order;
+import com.cg.inventory.services.OrderService;
+
+/**
+ * The OrderController class provides restful services to client like
+ * GET, POST, DELETE, and PUT
+ * 
+ * @author sharique nooman
+ *
+ */
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("/api/v1/order")
+public class OrderController {
+
+	@Autowired
+	private OrderService orderService;
+
+	@GetMapping
+	public List<Order> viewAllOrders() {
+		return orderService.viewAllOrders();
+	}
+
+	@PostMapping
+	public Order createOrder(@RequestBody Order order) {
+		return orderService.createOrder(order);
+	}
+
+	@DeleteMapping("{orderId}")
+	public void deleteOrder(@PathVariable Long orderId) {
+		orderService.deleteOrder(orderId);
+	}
+
+	@GetMapping("{orderId}")
+	public Order viewOrderById(@PathVariable Long orderId) {
+		return orderService.viewOrderById(orderId);
+	}
+	
+	@PutMapping("{orderId}")
+	public Order updateOrder(@PathVariable Long orderId, @RequestBody Order order) {
+		return orderService.updateOrder(orderId, order);
+	}
+}

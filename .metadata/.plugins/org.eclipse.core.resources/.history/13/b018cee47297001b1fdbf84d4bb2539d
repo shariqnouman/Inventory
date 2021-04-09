@@ -1,0 +1,114 @@
+package com.cg.inventory.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * This is an entity class for products with getters, setters, and constructors
+ * 
+ * @author sharique nooman
+ *
+ */
+@Entity(name = "products")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
+	private Long productId;
+
+	@NotBlank
+	@Size(min = 3, max = 50)
+	@Column(name = "product_name", nullable = false)
+	private String productName;
+
+	@NotBlank
+	@Column(name = "product_description", nullable = false)
+	private String productDescription;
+
+	@Lob
+	@Type(type = "org.hibernate.type.BinaryType")
+	@Column(name = "product_photo", nullable = false)
+	private byte[] productPhoto;
+
+	@NotNull
+	@Positive
+	@Column(name = "product_quantity", nullable = false)
+	private Long productQuantity;
+
+	@NotNull
+	@Positive
+	@Column(name = "product_price", nullable = false)
+	private Float productPrice;
+
+	@Column(name = "product_tag", nullable = true)
+	private String productTag;
+
+	@Column(name = "product_size", nullable = true)
+	private String productSize;
+
+	@Column(name = "product_unit", nullable = true)
+	private String productUnit;
+
+	@Size(min = 3, max = 30)
+	@Column(name = "product_location", nullable = true)
+	private String productLocation;
+
+	@ManyToMany(mappedBy = "products")
+	@JsonIgnore
+	private List<Order> orders;
+
+	public Product() {
+	}
+
+	public Product(Long productId, String productName) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+}

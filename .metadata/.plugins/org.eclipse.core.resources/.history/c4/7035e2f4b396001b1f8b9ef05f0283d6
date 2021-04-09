@@ -1,0 +1,44 @@
+package com.cg.inventory.services;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class OrderServiceImplTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testViewAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreateOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testViewOrderById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

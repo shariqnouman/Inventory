@@ -1,0 +1,11 @@
+package com.cg.inventory.model;
+
+/**
+ * This is an entity class for customers with getters, setters, and constructors
+ * 
+ * @author sharique nooman
+ *
+ */
+public class Category {
+
+}

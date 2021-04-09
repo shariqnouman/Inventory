@@ -1,0 +1,11 @@
+package com.cg.inventory.repositories;
+
+/**
+ * This is an interface which defines CRUD methods for transaction JPA repository
+ * 
+ * @author sharique nooman
+ *
+ */
+public interface TransactionRepository {
+
+}

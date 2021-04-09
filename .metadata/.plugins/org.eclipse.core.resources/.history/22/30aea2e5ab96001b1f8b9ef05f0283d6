@@ -1,0 +1,120 @@
+package com.cg.inventory.controllers;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import com.cg.inventory.model.Customer;
+import com.cg.inventory.model.Order;
+import com.cg.inventory.model.Product;
+import com.cg.inventory.services.OrderService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * The OrderControllerTest class has test methods for the order controller layer
+ * 
+ * @author sharique nooman
+ *
+ */
+@RunWith(SpringRunner.class)
+@WebMvcTest(OrderController.class)
+public class OrderControllerTest {
+
+	private List<Product> products;
+	private Customer customer;
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
+	@MockBean
+	private OrderService orderService;
+
+	@Before
+	public void setUp() throws Exception {
+		Product product = new Product(10L, "bag");
+		products = new ArrayList<>();
+		products.add(product);
+		customer = new Customer(10L, "shariq");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		products.clear();
+		customer = null;
+	}
+
+	@Test
+	public void testViewAllOrders() throws Exception {
+		String URI = "/api/v1/order";
+		Order order = new Order(LocalDateTime.now(), LocalDateTime.of(2021, 7, 30, 16, 9), 1200f, customer, products);
+		Order order1 = new Order(LocalDateTime.now(), LocalDateTime.of(2021, 8, 30, 14, 15), 1400f, customer, products);
+		Order order2 = new Order(LocalDateTime.now(), LocalDateTime.of(2021, 9, 30, 13, 10), 1600f, customer, products);
+
+		List<Order> orders = new ArrayList<>();
+		orders.add(order2);
+		orders.add(order1);
+		orders.add(order);
+
+		Mockito.when(orderService.viewAllOrders()).thenReturn(orders);
+		MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(URI).accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+		
+		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
+		String jsonOutput = mockHttpServletResponse.getContentAsString();
+		
+		assertThat(objectMapper.writeValueAsString(orders)).isEqualTo(jsonOutput);
+		assertEquals(HttpStatus.OK.value(), mockHttpServletResponse.getStatus());
+	}
+
+	@Test
+	public void testCreateOrder() throws Exception {
+		String URI = "/api/v1/order";
+		Order order = new Order(LocalDateTime.now(), LocalDateTime.of(2021, 7, 30, 16, 9), 1200f, customer, products);
+		Mockito.when(orderService.createOrder(Mockito.any(Order.class))).thenReturn(order);
+		MvcResult mvcResult = this.mockMvc
+				.perform(MockMvcRequestBuilders.post(URI).accept(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(order)).contentType(MediaType.APPLICATION_JSON))
+				.andReturn();
+		
+		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
+		String jsonOutput = mockHttpServletResponse.getContentAsString();
+		
+		assertThat(objectMapper.writeValueAsString(order)).isEqualTo(jsonOutput);
+		assertEquals(HttpStatus.OK.value(), mockHttpServletResponse.getStatus());
+	}
+
+	@Test
+	public void testDeleteOrder() throws Exception {
+	}
+
+	@Test
+	public void testViewOrderById() throws Exception {
+	}
+
+	@Test
+	public void testUpdateOrder() throws Exception {
+	}
+
+}

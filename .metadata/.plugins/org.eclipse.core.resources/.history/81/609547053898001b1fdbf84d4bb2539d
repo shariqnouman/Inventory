@@ -1,0 +1,5 @@
+package com.cg.inventory.model;
+
+public class Transaction {
+
+}

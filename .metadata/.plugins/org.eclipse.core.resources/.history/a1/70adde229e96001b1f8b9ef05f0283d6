@@ -1,0 +1,40 @@
+package com.cg.inventory.controllers;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * The OrderControllerTest class has test methods for the order controller layer
+ * 
+ * @author sharique nooman
+ *
+ */
+public class OrderControllerTest {
+
+	@Test
+	public void testViewAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreateOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testViewOrderById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

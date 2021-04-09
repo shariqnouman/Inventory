@@ -1,0 +1,9 @@
+1617682014219	Extract interface 'OrderService'
+1617688606878	Delete element
+1617764485787	Extract interface 'ProductService'
+1617785586950	Rename type 'CustomerRepository'
+1617786566818	Rename type 'OrderNotFoundException'
+1617786723169	Extract interface 'CustomerService'
+1617858652292	Extract interface 'CategoryService'
+1617861387486	Extract interface 'LoginService'
+1617866951989	Extract interface 'TransactionService'

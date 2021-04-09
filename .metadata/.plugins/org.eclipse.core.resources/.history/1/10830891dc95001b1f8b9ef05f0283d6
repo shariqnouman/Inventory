@@ -1,0 +1,10 @@
+spring.datasource.url =
+spring.datasource.username =
+spring.datasource.password =
+
+# Hibernate dll auto(create, create-drop, update)
+spring.jpa.hibernate.ddl-auto = update
+
+# Hibernate properties
+# The SQL dialect makes hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect

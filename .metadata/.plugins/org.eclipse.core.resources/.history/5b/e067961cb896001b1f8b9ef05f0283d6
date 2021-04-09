@@ -1,0 +1,73 @@
+package com.cg.inventory.services;
+
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.cg.inventory.model.Customer;
+import com.cg.inventory.model.Product;
+import com.cg.inventory.repositories.OrdersRepository;
+
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = OrderServiceImpl.class)
+public class OrderServiceImplTest {
+
+	private List<Product> products;
+	private Customer customer;
+	
+	@MockBean
+	private OrdersRepository ordersRepository;
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@Before
+	public void setUp() throws Exception {
+		Product product = new Product(10L, "bag");
+		products = new ArrayList<>();
+		products.add(product);
+		customer = new Customer(10L, "shariq");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		products.clear();
+		customer = null;
+	}
+
+	@Test
+	public void testViewAllOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreateOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testViewOrderById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateOrder() {
+		fail("Not yet implemented");
+	}
+
+}

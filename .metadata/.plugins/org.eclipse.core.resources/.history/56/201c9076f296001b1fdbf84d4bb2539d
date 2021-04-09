@@ -1,0 +1,75 @@
+package com.cg.inventory.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * This is an entity class for products with getters, setters, and constructors
+ * 
+ * @author sharique nooman
+ *
+ */
+@Entity(name = "products")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
+	private Long productId;
+
+	@NotBlank
+	@Column(name = "product_name", nullable = false)
+	private String productName;
+
+	@ManyToMany(mappedBy = "products")
+	@JsonIgnore
+	private List<Order> orders;
+
+	public Product() {
+	}
+
+	public Product(Long productId, String productName) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+}

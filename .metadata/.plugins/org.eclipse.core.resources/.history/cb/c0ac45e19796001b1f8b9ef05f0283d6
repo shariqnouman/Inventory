@@ -1,0 +1,19 @@
+package com.cg.inventory.services;
+
+import java.util.List;
+
+import com.cg.inventory.model.Order;
+
+public interface OrderService {
+
+	List<Order> viewAllOrders();
+
+	Order createOrder(Order order);
+
+	void deleteOrder(Long orderId);
+
+	Order viewOrderById(Long orderId);
+
+	Order updateOrder(Long orderId, Order order);
+
+}
