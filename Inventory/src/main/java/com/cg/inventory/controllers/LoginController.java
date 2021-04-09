@@ -61,12 +61,12 @@ public class LoginController {
 
 						return ResponseEntity.ok().body("sucess login");
 					} else if (data.getPassword().equals(password) && data.getUserId().equals(userId)
-							&& data.getType().equals("manager")) {
+							&& data.getType().equals("customer")) {
 
 						return ResponseEntity.ok().body("sucess login");
 					}
 				} else {
-					throw new ResourceNotFoundException("Employee not found for this id :: " + userId);
+					throw new ResourceNotFoundException("person not found for this id :: " + userId);
 				}
 
 				return ResponseEntity.ok().body("invalid login");
