@@ -1,5 +1,7 @@
 package com.cg.inventory.controllers;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,10 +21,17 @@ import com.cg.inventory.services.LoginService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * The LoginControllerTest class has test methods for the login controller layer
+ * 
+ * @author sharique nooman
+ *
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = InventoryApplication.class)
 public class LoginControllerTest {
-	 @Autowired
+
+	@Autowired
 	   private MockMvc mockMvc;
 	 @MockBean
 	 private LoginService service;
@@ -30,7 +39,7 @@ public class LoginControllerTest {
 	//This testValidateUser method for validate user 
 	@Test
 	public void testValidateUser() throws Exception {
-		final String uri= "/api/v1/login/Login1/{userId}/{password}";
+		final String uri= "/api/v1/login/login1/{userId}/{password}";
 	        Login data=new Login();
 	        data.setUserId("UshaNanga");
 	        data.setPassword("Sai@1999Nanga");
@@ -40,8 +49,8 @@ public class LoginControllerTest {
 	        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(uri,"UshaNanga","Sai@1999Nanga","nangausha@gmail.com").accept(MediaType.APPLICATION_JSON)).andReturn();
 	        MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 	        String jsonOutput = mockHttpServletResponse.getContentAsString();
-          assertThat("sucess login").isNotEqualTo(jsonOutput);
-  
+       assertThat("sucess login").isNotEqualTo(jsonOutput);
+
 	    }
 	 private String converttoJson(Object data) throws JsonProcessingException {
 	        ObjectMapper objectMapper = new ObjectMapper();
@@ -83,10 +92,4 @@ public class LoginControllerTest {
 	        assertThat(jsonInput).isNotEqualTo(jsonOutput);
 	 
 	 }
-
-
 }
-
-
-
-
